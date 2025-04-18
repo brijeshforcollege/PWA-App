@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>QR Code Generator</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#9333ea" />
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h1>QR Code Generator</h1>
+      <p>Enter a URL to generate a QR code</p>
+      <input type="url" id="urlInput" placeholder="Enter your URL here" />
+      <p id="error" class="error-message"></p>
+      <button id="generateBtn">
+        <span>🔳</span> Generate QR Code
+      </button>
+      <div id="qrContainer" class="qr-section hidden">
+        <img id="qrImage" src="" alt="Generated QR Code" />
+        <p id="qrUrl"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
