@@ -38,3 +38,24 @@ if ("serviceWorker" in navigator) {
     });
   }
   
+  navigator.serviceWorker.ready.then((reg) => {
+    return reg.sync.register("sync-qr");
+  });
+  
+  async function subscribeToPush() {
+    const registration = await navigator.serviceWorker.ready;
+  
+    const subscription = await registration.pushManager.subscribe({
+      userVisibleOnly: true,
+      applicationServerKey: "BAkmb0O_TvWF0AyoWK7WcAPdFwL40RidYXv68zKp9tCD_VKttbBSMC1U2fwy-E4usLcH405hdL5UsmKwaCic46M" // Required for real push
+    });
+  
+    console.log("Push Subscription:", JSON.stringify(subscription));
+  }
+  
+  Notification.requestPermission().then((permission) => {
+    if (permission === "granted") {
+      subscribeToPush();
+    }
+  });
+  
